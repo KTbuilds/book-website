@@ -1,0 +1,252 @@
+/* ----------------------------------------------------------
+   GLOBAL PAGE STYLE
+---------------------------------------------------------- */
+body {
+    background-color: #fdf5e6;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #4b3621;
+}
+
+
+/* ----------------------------------------------------------
+   HEADER
+---------------------------------------------------------- */
+#header-frame {
+    background-color: #6b8e23;
+    border: 5px solid #4b3621;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+#nav-bar {
+    background-color: #f1a94e;
+    border: 4px solid #4b3621;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+}
+
+.nav-link {
+    color: #4b3621;
+    text-decoration: none;
+    font-size: 38px;
+    font-weight: bold;
+    -webkit-text-stroke: 1px #4b3621;
+}
+
+
+/* ----------------------------------------------------------
+   MAIN LAYOUT (LEFT SIDEBAR • STORY • RIGHT SIDEBAR)
+---------------------------------------------------------- */
+#main-layout {
+    display: flex;
+    gap: 20px;
+}
+
+
+/* ----------------------------------------------------------
+   LEFT & RIGHT SIDEBARS
+---------------------------------------------------------- */
+.side-column {
+    flex: 0 0 220px;
+    background-color: #fcebb6;
+    border: 4px solid #6b8e23;
+    padding: 15px;
+    text-align: center;
+}
+
+.column-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+/* ----------------------------------------------------------
+   CHAPTER LIST (LEFT SIDEBAR)
+---------------------------------------------------------- */
+.solid-line {
+    border: none;
+    border-top: 3px solid #4b3621;
+}
+
+.chapter-list a {
+    display: block;
+    font-size: 22px;
+    padding: 15px 0;
+    color: #4b3621;
+    text-decoration: none;
+    border-bottom: 2px dotted #4b3621;
+}
+
+.chapter-list a:last-child {
+    border-bottom: none;
+}
+
+
+/* ----------------------------------------------------------
+   CHAPTER IMAGES
+---------------------------------------------------------- */
+.chapter-image {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 16 / 9; /* maintains a consistent aspect ratio */ 
+    object-fit: cover;   /* crops gracefully without distortion */
+    display: block;
+    margin: 20px auto;
+    border: 6px solid #f1a94e;
+}
+
+
+/* ----------------------------------------------------------
+   STORY CENTER PANEL
+---------------------------------------------------------- */
+.story-center {
+    flex: 1;
+    background-color: white;
+    border: 4px solid #6b8e23;
+    padding: 20px;
+    position: relative;
+}
+
+.main-illustration img {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 16 / 9; /* maintains a consistent aspect ratio */ 
+    object-fit: cover;   /* crops gracefully without distortion */
+    display: block;
+    margin: 20px auto;
+    border: 6px solid #f1a94e;
+}
+
+.btn-close {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: #8b4513;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 2px solid #4b3621;
+}
+
+
+/* ----------------------------------------------------------
+   PROFILE (RIGHT SIDEBAR)
+---------------------------------------------------------- */
+.emblem-circle {
+    width: 120px;
+    height: 120px;
+    margin: 15px auto;
+    border: 5px solid #f1a94e;
+    border-radius: 50%;
+    overflow: hidden;
+    background: white;
+}
+
+.emblem-circle img {
+    width: 100%;
+}
+
+.kindness-area {
+    margin-top: 20px;
+}
+
+.word-border {
+    border: 3px solid #4b3621;
+    display: inline-block;
+    padding: 5px 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.bar-border {
+    border: 3px solid #4b3621;
+    height: 25px;
+    background: #eee;
+}
+
+.progress-fill {
+    background: #f1a94e;
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+
+/* ----------------------------------------------------------
+   KINDNESS PROGRESS TRACKER
+---------------------------------------------------------- */
+#page-wrapper:has(#chapter-1:target) #kindness-fill { width: 33%; }
+#page-wrapper:has(#chapter-2:target) #kindness-fill { width: 66%; }
+#page-wrapper:has(#chapter-3:target) #kindness-fill { width: 100%; }
+
+
+/* ----------------------------------------------------------
+   CHAPTER VISIBILITY
+---------------------------------------------------------- */
+.chapter-content { display: none; }
+.chapter-content:target { display: block; }
+
+
+/* ----------------------------------------------------------
+   FOOTER
+---------------------------------------------------------- */
+#main-footer {
+    background: #6b8e23;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border: 4px solid #4b3621;
+    margin-top: 30px;
+}
+
+
+/* ----------------------------------------------------------
+   ANIMATED LIGHT TRANSITIONS
+---------------------------------------------------------- */
+.story-container {
+    transition: background-color 1.5s ease, filter 1.5s ease;
+}
+
+#page-wrapper:has(#chapter-1:target) .story-container {
+    background-color: #fff8dc;
+    filter: brightness(1.05);
+}
+
+#page-wrapper:has(#chapter-2:target) .story-container {
+    background-color: #f5f5dc;
+    filter: brightness(0.85);
+}
+
+#page-wrapper:has(#chapter-3:target) .story-container {
+    background-color: #fffaf0;
+    filter: brightness(1.1);
+}
+
+
+/* ----------------------------------------------------------
+   CHAPTER FADE-IN ANIMATION
+---------------------------------------------------------- */
+.chapter-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.chapter-content:target {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ----------------------------------------------------------
+   HIDE HOME ILLUSTRATION WHEN CHAPTER IS OPEN
+---------------------------------------------------------- */
+#page-wrapper:has(.chapter-content:target) #home-illustration {
+    display: none;
+}
